@@ -79,4 +79,35 @@ describe('New User Form Tests', () =>{
         cy.get('button[type="submit"]')
           .click()
     })
+
+    //Check Form Validation if inputs are not filled in correctly
+    it('Check for Form Validation Errors', () =>{
+        
+        //Type 1 character into Name input
+        cy.get('input[name="name"]')
+          .type('a')
+          .should('have.value', 'a')
+        
+        //This should cause the Form Validation error message to appear
+        cy.get('p.error')
+          .should('contain', 'Your name must contain at least 3 letters')
+
+        //Type another character into Name input
+        cy.get('input[name="name"]')
+          .type('b')
+          .should('have.value', 'ab')
+        
+         //This should still cause the Form Validation error message
+        cy.get('p.error')
+          .should('contain', 'Your name must contain at least 3 letters')
+
+        //Type another character into Name input
+        cy.get('input[name="name"]')
+        .type('c')
+        .should('have.value', 'abc')
+      
+        //This should cause the Form Validation error message to disappear
+        cy.get('p.error')
+        .should('not.exist')
+    })
 })
