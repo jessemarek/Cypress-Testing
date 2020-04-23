@@ -14,10 +14,12 @@ const Form = props =>{
         <form className="container" onSubmit={onSubmit}>
             <h2>New User Form</h2>
 
-            <label htmlFor="name"> {/* Input for User Name */}
+            {/* Input for User Name */}
+            <label htmlFor="name"> 
                 Name<br></br>
                 <input 
                     id="name" 
+                    data-cy="name"
                     name="name" 
                     type="text" 
                     onChange={onInputChange}
@@ -26,10 +28,12 @@ const Form = props =>{
                 {errors.name.length > 3 ? (<p className="error">{errors.name}</p>) : null}
             </label>
 
-            <label htmlFor="email"> {/* Input for User Email */}
+            {/* Input for User Email */}
+            <label htmlFor="email"> 
                 Email<br></br>
                 <input 
                     id="email" 
+                    data-cy="email"
                     name="email" 
                     type="email"
                     onChange={onInputChange} 
@@ -38,10 +42,12 @@ const Form = props =>{
                 {errors.email.length > 0 ? (<p className="error">{errors.email}</p>) : null}
             </label>
 
-            <label htmlFor="password"> {/* Input for User Password */}
+            {/* Input for User Password */}
+            <label htmlFor="password"> 
                 Password<br></br>
                 <input 
                     id="password" 
+                    data-cy="password"
                     name="password" 
                     type="password"
                     onChange={onInputChange} 
@@ -50,10 +56,12 @@ const Form = props =>{
                 {errors.password.length > 8 ? (<p className="error">{errors.password}</p>) : null}
             </label>
 
-            <label htmlFor="role"> {/* Dropdown for User's Role */}
+            {/* Dropdown for User's Role */}
+            <label htmlFor="role"> 
                 Role<br></br>
                 <select 
-                    id="role" 
+                    id="role"
+                    data-cy="role" 
                     name="role" 
                     onChange={onInputChange}
                     value={values.role}
@@ -68,9 +76,11 @@ const Form = props =>{
                 {errors.role.length > 0 ? (<p className="error">{errors.role}</p>) : null}
             </label>
 
-            <label htmlFor="terms"> {/* Checkbox for User to agree to the ToS */}
+            {/* Checkbox for User to agree to the ToS */}
+            <label htmlFor="terms"> 
                 <input 
                     id="terms" 
+                    data-cy="terms"
                     name="terms" 
                     type="checkbox"
                     onChange={onCheckboxChange}
@@ -79,7 +89,13 @@ const Form = props =>{
                 {errors.terms ? (<p className="error">{errors.terms}</p>) : null}
             </label>
 
-            <button type="submit" disabled={disabled}>Submit</button> {/* Submit the Form */}
+            {/* Submit the Form */}
+            <button 
+                data-cy="submit" 
+                type="submit" 
+                disabled={disabled}
+            >Submit
+            </button> 
 
         </form>
     )
